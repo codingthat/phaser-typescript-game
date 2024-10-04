@@ -1,0 +1,17 @@
+{
+  "name": "phaser-typescript-game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite --host"
+  },
+  "keywords": [],
+  "author": "Kevin Bloch",
+  "license": "MIT",
+  "description": "Phaser TypeScript platformer",
+  "devDependencies": {
+    "phaser": "^3.85.2",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  }
+}
