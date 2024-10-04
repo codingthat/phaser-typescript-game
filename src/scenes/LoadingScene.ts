@@ -31,14 +31,12 @@ export default class LoadingScene extends Phaser.Scene {
             progressBox.destroy();
         });
 
-        for (var i = 0; i<5000; i++) {
-            this.load.spritesheet(Asset.hero + i, 'assets/hero.png',
-                { frameWidth: 35, frameHeight: 68 }
-            );
-        }
+        this.load.spritesheet(Asset.hero, 'assets/hero.png',
+            { frameWidth: 35, frameHeight: 68 }
+        );
     }
 
     create(): void {
-        
+        this.scene.start('GameScene');
     }
 }
