@@ -79,6 +79,9 @@ export default class GameScene extends Phaser.Scene {
         });
 
         this.cursors = this.input.keyboard!.createCursorKeys();
+        if (this.input.manager.touch) {
+            this.createMobileControls();
+        }
     }
 
     update(): void {
@@ -119,5 +122,31 @@ export default class GameScene extends Phaser.Scene {
             player.dead = true;
             this.physics.pause();
         }
+    }
+
+    private createMobileControls(): void {
+        const buttonStyle: Phaser.Types.GameObjects.Text.TextStyle = {
+            color: 'black',
+            fontSize: '100px',
+            fixedHeight: this.buttonSize,
+            fixedWidth: this.buttonSize,
+            align: 'center',
+        };
+
+        const addButton = (symbol: string, cursorKey: Phaser.Input.Keyboard.Key, backgroundColor: string, x: number) => {
+            function fakeKeyboardState(isDown: boolean): void {
+                cursorKey.isDown = isDown;
+            }
+            this.add.text(x, this.scale.height - this.buttonSize, symbol, Object.assign(buttonStyle, { backgroundColor }))
+                .setInteractive()
+                .on('pointerdown', () => fakeKeyboardState(true))
+                .on('pointerup', () => fakeKeyboardState(false))
+                .on('pointerout', () => fakeKeyboardState(false));
+        }    
+        addButton('←', this.cursors.left, 'lightgreen', 0);
+        addButton('→', this.cursors.right, 'skyblue', this.buttonSize);
+        addButton('↑', this.cursors.up, 'pink', this.scale.width - this.buttonSize);
+
+        this.input.addPointer(1); // Enable multitouch
     }
 }
