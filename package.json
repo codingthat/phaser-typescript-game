@@ -10,8 +10,8 @@
   "license": "MIT",
   "description": "Phaser TypeScript platformer",
   "devDependencies": {
-    "phaser": "^3.85.2",
-    "typescript": "^5.6.2",
-    "vite": "^5.4.8"
+    "phaser": "^4.2.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.2"
   }
 }

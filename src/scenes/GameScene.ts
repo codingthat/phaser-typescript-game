@@ -63,7 +63,7 @@ export default class GameScene extends Phaser.Scene {
             gridAlign: { cellWidth: this.scale.width / starCount },
             setOrigin: {x: 0, y: 0},
         });
-        this.stars.children.getArray().forEach((star) => {
+        this.stars.children.forEach((star) => {
             (star as Image).setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
         });
         this.physics.add.collider(this.stars, platforms);
@@ -102,7 +102,7 @@ export default class GameScene extends Phaser.Scene {
         );
 
         if (this.stars.countActive(true) === 0) {
-            this.stars.getChildren().forEach((star) => {
+            this.stars.children.forEach((star) => {
                 (star as Image).enableBody(true, star.body?.position.x, 0, true, true);
             });
             const half = this.scale.width / 2;
